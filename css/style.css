@@ -364,13 +364,8 @@ footer.footer {
 }
 .wrapper main.main .favourite {
   position: relative;
-  margin-top: 100px;
+  margin-top: 20px;
   background-color: #F2F2F2;
-}
-@media (max-width: 1104px) {
-  .wrapper main.main .favourite {
-    margin-top: calc(40px + 60 * ((100vw - 300px) / 804));
-  }
 }
 .wrapper main.main .favourite__body {
   display: -ms-grid;
