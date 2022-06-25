@@ -369,7 +369,7 @@ footer.footer {
 }
 @media (max-width: 1104px) {
   .wrapper main.main .favourite {
-    margin-top: calc(20px + 80 * ((100vw - 100vwpx) / 1004vw));
+    margin-top: calc(40px + 60 * ((100vw - 300px) / 804));
   }
 }
 .wrapper main.main .favourite__body {
