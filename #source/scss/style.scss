@@ -9,6 +9,12 @@
 $maxWidthContainer: 1104;
 $maxWidth: 1920;
 
+
+body {
+  height: 100%;
+}
+
+
 @mixin adaptiv-value($property, $startSize, $minSize, $type, $blockSize) {
   $addSize: $startSize - $minSize;
 
@@ -29,7 +35,9 @@ $maxWidth: 1920;
 %container {
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr minmax(auto, 1104px) 1fr;
+  grid-template-columns: 1fr minmax(100px, 1104px) 1fr;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 html, body {
@@ -42,7 +50,10 @@ html, body {
 .wrapper {
   display: grid;
   min-height: 100vh;
-  grid-template: minmax(auto, 768px) 1fr minmax(70px, auto) / 1fr;
+  grid-template: auto 1fr minmax(auto, 100px) / 1fr;
+  overflow: hidden;
+  width: 100%;
+  row-gap: 40px;
   grid-template-areas:
           "header"
           "main"
@@ -69,23 +80,14 @@ footer.footer {
 
 
 .wrapper {
-  min-height: 100vw;
-  width: 100%;
-  overflow: hidden;
   .header {
-    &__body {
+    width: 100%;
+    .header__body {
       display: grid;
-      grid-template-rows: 1fr;
-      grid-template-columns: minmax(auto, 470px) minmax(auto, 750px) minmax(320px, auto);
-      @media (max-width: 1104px) {
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: minmax(auto, 660px) minmax(auto, 1px) minmax(auto, 660px);
-      }
+      grid-template-columns: 1fr minmax(auto, 750px) 1fr;
     }
     section.header__entry {
       display: grid;
-      grid-template: 1fr / 1fr;
       position: relative;
       background-color: #F9FBFF;
       .entry__logo {
@@ -93,19 +95,24 @@ footer.footer {
         grid-template: minmax(auto, 4.7275rem) minmax(auto, 2.2725rem) minmax(auto, 25.5rem) minmax(auto, 16.5rem) 1fr/ 1fr;
         img {
           grid-row: 2 / 3;
-          display: block;
           margin: 0 auto;
+          padding: 0 10px
         }
         .entry__title {
           grid-row: 4 / 5;
-          display: block;
-          margin: 0 auto;
-          position: absolute;
-          left: 60px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 10px;
+          @media (min-width: 1104px) {
+            grid-row: 4 / 5;
+            display: block;
+            position: absolute;
+          }
           > span {
             font-family: 'Montserrat', sans-serif;
             display: block;
-            @include adaptiv-value('font-size', 54, 20, 1, 470);
+            @include adaptiv-value('font-size', 50, 16, 1, 470);
             line-height: 70px;
             position: relative;
             z-index: 2;
@@ -118,6 +125,7 @@ footer.footer {
             background-color: #C7A17A;
             color: #F9FBFF;
             padding: 8px;
+
           }
         }
       }
@@ -125,7 +133,7 @@ footer.footer {
     .entry__image {
       position: relative;
       @media (max-width: 1104px) {
-        visibility: hidden;
+        display: none;
       }
       img {
         position: absolute;
@@ -143,26 +151,18 @@ footer.footer {
       color: #EDF0F5;
       nav.aside__bar {
         display: grid;
-        grid-template: repeat(auto-fit, 1fr) / 1fr;
+        grid-template-rows: repeat(auto-fit, 1fr);
         row-gap: 10px;
         height: 100%;
         text-align: left;
-        max-width: 150px;
-        max-height: 500px;
         margin: 76px auto;
-        padding: 0 20px;
+        padding: 0 20px ;
         .aside__item:nth-child(2) {
           font-weight: 700;
           @include adaptiv-value('font-size', 16, 8, 1, 300)
         }
-        .aside__item ul {
-          display: grid;
-          grid-template: repeat(auto-fit, 1fr) / 1fr;
-          row-gap: 30px;
-          li {
-            font-weight: 300;
-            line-height: 20px;
-          }
+        ul li{
+          padding: 30px 0 ;
         }
       }
     }
@@ -172,36 +172,39 @@ footer.footer {
       &__body {
         @extend %container;
       }
-      h3.building__subtitle {}
+      h3.building__subtitle {
+
+      }
       h2.building__title {
         margin: 10px 0 0 0;
       }
       section.building__cards {
         @include adaptiv-value('margin-top', 97, 40, 1, 400);
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        grid-auto-flow: row;
-        column-gap: 68px;
-        row-gap: 50px;
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 30px;
         .building__item {
           font-family: 'Nunito', sans-serif;
-          display: grid;
-          grid-template: auto 1fr 1fr / 1fr;
+          flex-shrink: 1;
+          flex-basis: 40%;
+          display: flex;
+          gap: 20px;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
           .building__image {
             align-self: center;
             justify-self: center;
             display: flex;
             justify-content: center;
             img {
-
             }
           }
           .building__image-title {
             font-weight: 700;
             @include adaptiv-value('font-size', 24, 16, 1, 250);
             line-height: 28px;
-            align-self: center;
-            justify-self: center;
             color: #232C38;
           }
           .building__image-text {
@@ -215,31 +218,126 @@ footer.footer {
       }
     }
     .favourite {
-      background: linear-gradient(#415167, #415167) -1104px 0 no-repeat;
+      position: relative;
+      @include adaptiv-value('margin-top', 100, 20, 1, 100vw);
+      background-color: #F2F2F2;
       &__body {
-        @extend %container;
-      }
-      h3.favourite__subtitle {}
-      h2.favourite__title {}
-      section.favourite__cards {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(560px, 1fr));
+        grid-template: repeat(auto-fit, minmax(250px, 1fr)) / 1fr;
+        @media(min-width: 1050px) {
+          display: grid;
+          grid-template-rows: 1fr;
+          grid-template-columns: minmax(100px, auto) minmax(100px, 1104px) 48px minmax(80px, 90px);
+          min-height: 100vh;
+          overflow: hidden;
+        }
+        .bg_green {
+          background-color: #415167;
+          width: 100%;
+        }
+        .favourite__container {
+        }
+      }
+      h3.favourite__subtitle {
+        margin: 50px 0 0 0;
+      }
+      h2.favourite__title {
+        margin: 10px 0 0 0;
+      }
+      section.favourite__cards {
+        display: flex;
+        flex-flow: row wrap;
+        row-gap: 32px;
         column-gap: 8px;
-        row-gap: 50px;
+        justify-content: space-around;
+        margin: 70px 0 100px 0;
+        align-items: center;
         .favourite__item {
           display: flex;
-
+          flex-basis: 45%;
+          flex-grow: 1;
+          flex-shrink: 1;
+          background-color: #FFFFFF;
+          box-shadow: 0 0 1px rgba(37, 100, 11, 1);
+          margin: 0 20px;
           .favourite__image {
-            img {}
-          }
-          .favourite__content {
-            .favourite__price {}
-            .favourite__image-title {}
-            .favourite__image-text {}
-            .favourite__buttons {
-              a {}
+            position: relative;
+            flex-basis: 50%;
+            flex-shrink: 1;
+            padding: 50% 0 0 0;
+            img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
             }
           }
+          .favourite__content {
+            display: grid;
+            grid-auto-flow: row;
+            margin: 10px 0 0 0;
+            row-gap: 20px;
+            .favourite__price {
+              @include adaptiv-value('font-size', 20, 12, 1, 560);
+              padding: 0 0 0 25px;
+            }
+            .favourite__image-title {
+              font-family: 'Nunito', sans-serif;
+              font-style: normal;
+              font-weight: 700;
+              @include adaptiv-value('font-size', 24, 15, 1, 560);
+              line-height: 28px;
+              color: #232C38;
+              padding: 0 0 0 25px;
+            }
+            .favourite__image-text {
+              @include adaptiv-value('font-size', 16, 10, 1, 560);
+              padding: 0 0 0 25px;
+            }
+            .favourite__buttons {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding: 0 0 0 0;
+              column-gap: 10px;
+              margin: 10px 10px;
+            }
+          }
+        }
+      }
+      .favourite__carousel-btn {
+        align-self: center;
+        justify-self: center;
+        background-color: #C7A17A;
+        border-radius: 50%;
+        width: 48px;
+        height: 48px;
+        position: relative;
+        //padding: 0 0 56% 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          position: absolute;
+          object-fit: cover;
+        }
+        @media (max-width: 1050px) {
+          display: none;
+        }
+      }
+      .favourite__next-cards {
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        > div {
+          opacity: 0.3
+        }
+        @media (max-width: 1050px) {
+          display: none;
         }
       }
     }
@@ -319,7 +417,8 @@ footer.footer {
   line-height: 34px;
   color: #415167;
   text-transform: uppercase;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 .subtitle {
@@ -327,18 +426,47 @@ footer.footer {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   color: #415167;
 }
 
 .buttons {
-
+  a {
+    @include adaptiv-value('font-size', 16, 10, 1, 560);
+    @include adaptiv-value('line-height', 22, 15, 1, 560);
+    display: inline-block;
+  }
+  a:first-child {
+    background: #C7A17A;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    border: 1px white solid;
+    border-radius: 50%;
+    padding: 10px 30px;
+    color: #F9FBFF;
+  }
+  a:last-child {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    color: #415167;
+  }
 }
 
 .text {
+  font-family: 'Nunito', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 22px;
+  color: #151D28;
 
 }
 
 .price {
-
+  font-family: 'Nunito', sans-serif;
+  color: #C7A17A;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
 }
