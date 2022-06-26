@@ -896,9 +896,7 @@ footer.footer {
       -ms-flex-align: center;
           align-items: center;
   padding: 0 20px 0 0;
-  -webkit-column-gap: 30px;
-     -moz-column-gap: 30px;
-          column-gap: 30px;
+  gap: 30px;
 }
 @media (min-width: 800px) {
   .wrapper main.main .combo .combo__items {
