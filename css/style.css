@@ -90,7 +90,7 @@ body {
   height: 100%;
 }
 
-.wrapper main.main .combo__body, .wrapper main.main .building__body {
+.wrapper main.main .building__body {
   display: -ms-grid;
   display: grid;
   -ms-grid-rows: 1fr;
@@ -101,17 +101,17 @@ body {
   overflow: hidden;
 }
 
-.wrapper main.main .combo__body > *:nth-child(1), .wrapper main.main .building__body > *:nth-child(1) {
+.wrapper main.main .building__body > *:nth-child(1) {
   -ms-grid-row: 1;
   -ms-grid-column: 1;
 }
 
-.wrapper main.main .combo__body > *:nth-child(2), .wrapper main.main .building__body > *:nth-child(2) {
+.wrapper main.main .building__body > *:nth-child(2) {
   -ms-grid-row: 1;
   -ms-grid-column: 2;
 }
 
-.wrapper main.main .combo__body > *:nth-child(3), .wrapper main.main .building__body > *:nth-child(3) {
+.wrapper main.main .building__body > *:nth-child(3) {
   -ms-grid-row: 1;
   -ms-grid-column: 3;
 }
@@ -338,6 +338,16 @@ footer.footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  border: 1px solid blue;
+}
+.wrapper main.main .building section.building__cards .building__item .building__image img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
 }
 .wrapper main.main .building section.building__cards .building__item .building__image-title {
   font-weight: 700;
@@ -437,8 +447,8 @@ footer.footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-preferred-size: 45%;
-      flex-basis: 45%;
+  -ms-flex-preferred-size: 43%;
+      flex-basis: 43%;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -475,7 +485,7 @@ footer.footer {
 }
 .wrapper main.main .favourite section.favourite__cards .favourite__item .favourite__content .favourite__price {
   font-size: 20px;
-  padding: 0 0 0 25px;
+  padding: 30px 0 0 25px;
 }
 @media (max-width: 1104px) {
   .wrapper main.main .favourite section.favourite__cards .favourite__item .favourite__content .favourite__price {
@@ -627,23 +637,27 @@ footer.footer {
 @media (min-width: 1104px) {
   .wrapper main.main .giftset section.giftset__content .giftset__image {
     display: block;
-    position: relative;
-    -ms-flex-preferred-size: 50%;
-        flex-basis: 50%;
-    padding: 50% 0 0 0;
+    padding: 55% 0 0 40%;
     -webkit-box-flex: 1;
         -ms-flex-positive: 1;
             flex-grow: 1;
     background-color: #F2F2F2;
+    -ms-flex-preferred-size: 60%;
+        flex-basis: 60%;
+    position: relative;
   }
   .wrapper main.main .giftset section.giftset__content .giftset__image img {
     position: absolute;
     top: 0;
+    padding: 10% 5% 0 0;
     left: 0;
     width: 100%;
     height: 100%;
-    -o-object-fit: fill;
-       object-fit: fill;
+    -webkit-box-flex: 0;
+        -ms-flex-positive: 0;
+            flex-grow: 0;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
 }
 .wrapper main.main .giftset section.giftset__content .giftset__image-content {
@@ -654,17 +668,23 @@ footer.footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  row-gap: 60px;
+  row-gap: 2rem;
   -ms-flex-preferred-size: auto;
       flex-basis: auto;
   background-color: #F2F2F2;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__price-section {
-  margin: 10px 0 0 0;
+  margin: 2rem 0 0 0;
+}
+.wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__price-section .giftset__price {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__main-section {
-  -ms-flex-negative: 0;
-      flex-shrink: 0;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -675,9 +695,10 @@ footer.footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  row-gap: 20px;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  row-gap: 1.25rem;
 }
 .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__button-section {
   -ms-flex-negative: 1;
@@ -689,25 +710,28 @@ footer.footer {
 .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__title {
   font-family: "Nunito", sans-serif;
   font-weight: 700;
-  font-size: 32px;
-  line-height: 28px;
+  font-size: 2rem;
+  line-height: 1.75rem;
   color: #232C38;
+  padding: 1rem 0;
 }
-@media (min-width: 1104px) {
+@media (max-width: 1104px) {
   .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__title {
-    font-size: calc(24px + 8 * ((100vw - 300px) / 1620));
+    font-size: 1.5rem;
+    line-height: 1.25rem;
   }
 }
 .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__text {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 1.375rem;
   color: #151D28;
 }
 @media (min-width: 1104px) {
   .wrapper main.main .giftset section.giftset__content .giftset__image-content .giftset__text {
-    font-size: calc(16px + 8 * ((100vw - 5000px) / -3080));
+    font-size: 2rem;
+    line-height: 2.3rem;
   }
 }
 .wrapper main.main .giftset section.giftset__content .giftset__suggestion {
@@ -742,13 +766,14 @@ footer.footer {
 .wrapper main.main .giftset section.giftset__content .giftset__suggestion .suggestion__item .suggestion__text-content .suggestion__title, .wrapper main.main .giftset section.giftset__content .giftset__suggestion .suggestion__item .suggestion__text-content .suggestion__text {
   font-family: "Nunito", sans-serif;
   font-weight: 300;
-  font-size: 24px;
-  line-height: 22px;
+  font-size: 1rem;
+  line-height: 0.8rem;
   color: #415167;
 }
 @media (min-width: 1104px) {
   .wrapper main.main .giftset section.giftset__content .giftset__suggestion .suggestion__item .suggestion__text-content .suggestion__title, .wrapper main.main .giftset section.giftset__content .giftset__suggestion .suggestion__item .suggestion__text-content .suggestion__text {
-    font-size: calc(16px + 8 * ((100vw - 5000px) / -3080));
+    font-size: 2rem;
+    line-height: 1.8rem;
   }
 }
 .wrapper main.main .giftset section.giftset__content .giftset__buttons {
@@ -810,6 +835,193 @@ footer.footer {
 .wrapper main.main .giftset aside.giftset__panel nav.panel a:last-child {
   -webkit-box-shadow: inset 5px 0 4px 0 rgba(0, 0, 0, 0.4);
           box-shadow: inset 5px 0 4px 0 rgba(0, 0, 0, 0.4);
+}
+.wrapper main.main .combo {
+  background-color: #FFFFFF;
+  padding: 50px 0;
+}
+.wrapper main.main .combo__body {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: 1fr;
+  grid-template-rows: 1fr;
+  -ms-grid-columns: 100px 1fr 48px minmax(80px, 90px);
+  grid-template-columns: 100px 1fr 48px minmax(80px, 90px);
+  min-height: 100vh;
+  overflow: hidden;
+}
+.wrapper main.main .combo__body > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.wrapper main.main .combo__body > *:nth-child(2) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+.wrapper main.main .combo__body > *:nth-child(3) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+.wrapper main.main .combo__body > *:nth-child(4) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 4;
+}
+.wrapper main.main .combo__body .bg_green {
+  background-color: #415167;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.wrapper main.main .combo .combo__items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap-reverse;
+      flex-wrap: wrap-reverse;
+  height: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px 0 0;
+  -webkit-column-gap: 30px;
+     -moz-column-gap: 30px;
+          column-gap: 30px;
+}
+@media (min-width: 800px) {
+  .wrapper main.main .combo .combo__items {
+    -webkit-box-pack: right;
+        -ms-flex-pack: right;
+            justify-content: right;
+    padding: 0;
+  }
+}
+.wrapper main.main .combo .combo__items .combo__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-preferred-size: 30%;
+      flex-basis: 30%;
+  row-gap: 10px;
+}
+@media (min-width: 800px) {
+  .wrapper main.main .combo .combo__items .combo__card:last-child {
+    height: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: relative;
+  }
+  .wrapper main.main .combo .combo__items .combo__card:last-child .combo__card-content {
+    background-color: #FFFFFF;
+    position: relative;
+    z-index: 23;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 10px;
+  }
+  .wrapper main.main .combo .combo__items .combo__card .bg_green_for_combo__card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #415167;
+    z-index: 1;
+  }
+}
+.wrapper main.main .combo .combo__items .combo__card .combo__image {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  position: relative;
+  padding: 70% 0 0 0;
+}
+.wrapper main.main .combo .combo__items .combo__card .combo__image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.wrapper main.main .combo .combo__items .combo__card .combo__price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-column-gap: 10px;
+     -moz-column-gap: 10px;
+          column-gap: 10px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #C7A17A;
+}
+.wrapper main.main .combo .combo__items .combo__card .combo__price > span {
+  font-family: "Nunito", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+  -webkit-text-decoration-line: line-through;
+          text-decoration-line: line-through;
+  color: #415167;
+  opacity: 0.5;
+}
+.wrapper main.main .combo .combo__items .combo__card .combo__card-title {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: #232C38;
+}
+.wrapper main.main .combo .combo__items .combo__card .combo__card-text {
+  font-family: "Nunito", sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  color: #151D28;
+}
+.wrapper main.main .combo .combo__carousel-btn-block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #415167;
+  position: relative;
+  z-index: 20;
+}
+.wrapper main.main .combo .bg_green img {
+  opacity: 0.5;
 }
 .wrapper .footer {
   background: #EDF0F5;
@@ -893,6 +1105,7 @@ footer.footer {
 .buttons a:last-child {
   font-family: "Nunito", sans-serif;
   font-weight: 700;
+  padding: 10px 30px;
   color: #415167;
 }
 
@@ -910,4 +1123,26 @@ footer.footer {
   font-style: normal;
   font-weight: 600;
   line-height: 24px;
+}
+
+.carousel-btn {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  background-color: #C7A17A;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
