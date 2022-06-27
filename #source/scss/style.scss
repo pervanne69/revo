@@ -93,7 +93,7 @@ footer.footer {
       .entry__logo {
         display: grid;
         grid-template: minmax(auto, 4.7275rem) minmax(auto, 2.2725rem) minmax(auto, 25.5rem) minmax(auto, 16.5rem) 1fr/ 1fr;
-        img {
+        a {
           grid-row: 2 / 3;
           margin: 0 auto;
           padding: 0 10px
@@ -186,8 +186,7 @@ footer.footer {
         gap: 30px;
         .building__item {
           font-family: 'Nunito', sans-serif;
-          flex-shrink: 1;
-          flex-basis: 40%;
+          flex-basis: 38%;
           display: flex;
           gap: 20px;
           flex-direction: column;
@@ -198,8 +197,6 @@ footer.footer {
             justify-self: center;
             display: flex;
             justify-content: center;
-            border: 1px solid blue;
-
             img {
               object-fit: cover;
               flex-grow: 1;
@@ -324,6 +321,7 @@ footer.footer {
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
         img {
           position: absolute;
           object-fit: cover;

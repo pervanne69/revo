@@ -185,7 +185,7 @@ footer.footer {
   -ms-grid-columns: 1fr;
       grid-template: minmax(auto, 4.7275rem) minmax(auto, 2.2725rem) minmax(auto, 25.5rem) minmax(auto, 16.5rem) 1fr/1fr;
 }
-.wrapper .header section.header__entry .entry__logo img {
+.wrapper .header section.header__entry .entry__logo a {
   -ms-grid-row: 2;
   -ms-grid-row-span: 1;
   grid-row: 2/3;
@@ -307,10 +307,8 @@ footer.footer {
 }
 .wrapper main.main .building section.building__cards .building__item {
   font-family: "Nunito", sans-serif;
-  -ms-flex-negative: 1;
-      flex-shrink: 1;
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  -ms-flex-preferred-size: 38%;
+      flex-basis: 38%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -338,7 +336,6 @@ footer.footer {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: 1px solid blue;
 }
 .wrapper main.main .building section.building__cards .building__item .building__image img {
   -o-object-fit: cover;
@@ -551,6 +548,7 @@ footer.footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  cursor: pointer;
 }
 .wrapper main.main .favourite .favourite__carousel-btn img {
   position: absolute;
